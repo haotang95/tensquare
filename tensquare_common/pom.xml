@@ -10,12 +10,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tensquare_common</artifactId>
+
     <packaging>pom</packaging>
+
     <modules>
         <module>tensquare_enitiy</module>
         <module>tensquare_interface</module>
         <module>tensquare_code</module>
     </modules>
-
 
 </project>
