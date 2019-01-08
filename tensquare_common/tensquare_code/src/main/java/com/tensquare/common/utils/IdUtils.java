@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Bean;
 public class IdUtils {
 
     @Bean
-    public static String getSnowFlakeId(){
+    public static String getSnowFlakeId() {
         return String.valueOf(IdWorker.getInstance().nextId());
     }
 }

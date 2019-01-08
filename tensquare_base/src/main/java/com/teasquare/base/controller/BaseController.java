@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class BaseController {
 
     @GetMapping("/get")
-    public ResultData get(){
+    public ResultData get() {
         String snowFlakeId = IdUtils.getSnowFlakeId();
         return new ResultData(true, StatusCode.ERROR.getCode(), "1", snowFlakeId);
     }

@@ -1,18 +1,11 @@
 package com.tensquare.common.code;
 
-import com.tensquare.common.config.ConfigProperties;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import com.tensquare.common.utils.PropertiesFileUtil;
 
-import javax.annotation.PostConstruct;
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * <p>名称：IdWorker.java</p>
@@ -32,7 +25,6 @@ import java.util.Date;
  *
  * @author Polim
  */
-@EnableConfigurationProperties(ConfigProperties.class)
 public class IdWorker {
     // 时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）
     private final static long twepoch = 1546272001000L;
@@ -63,16 +55,14 @@ public class IdWorker {
     // 数据标识id部分
     private final long datacenterId;
 
-    public IdWorker(){
+    public IdWorker() {
         this.datacenterId = getDatacenterId(maxDatacenterId);
         this.workerId = getMaxWorkerId(datacenterId, maxWorkerId);
     }
 
     /**
-     * @param workerId
-     *            工作机器ID
-     * @param datacenterId
-     *            序列号
+     * @param workerId     工作机器ID
+     * @param datacenterId 序列号
      */
     public IdWorker(long workerId, long datacenterId) {
         if (workerId > maxWorkerId || workerId < 0) {
@@ -88,24 +78,21 @@ public class IdWorker {
     //实例
     public volatile static IdWorker instance = null;
 
-    @Autowired
-    private ConfigProperties configPropertiesAutowire;
-
-    private static ConfigProperties configProperties;
-
-    @PostConstruct
-    public void init(){
-        configProperties = this.configPropertiesAutowire;
-    }
-
     //获取实例
-    public static IdWorker getInstance(){
-        if(instance == null){
-            long systemCode = Long.valueOf(configProperties.getSnowflakeSystemCodeId());
-            long workCode = Long.valueOf(configProperties.getSnowflakeWorkCodeId());
+    public static IdWorker getInstance() {
+        if (instance == null) {
+            String snowflakeSystemCodeId = PropertiesFileUtil.getInstance().get("snowflake.systemCode.id");
+            String snowflakeWorkCodeId = PropertiesFileUtil.getInstance().get("snowflake.workCode.id");
+            long systemCode = Long.valueOf(snowflakeSystemCodeId);
+            long workCode = Long.valueOf(snowflakeWorkCodeId);
             return new IdWorker(systemCode, workCode);
         }
         return instance;
+    }
+
+    private static ResourceBundle getResourceBundle(String config) {
+        ResourceBundle bundle = ResourceBundle.getBundle(config);
+        return bundle;
     }
 
     /**
@@ -160,14 +147,14 @@ public class IdWorker {
         mpid.append(datacenterId);
         String name = ManagementFactory.getRuntimeMXBean().getName();
         if (!name.isEmpty()) {
-         /*
-          * GET jvmPid
-          */
+            /*
+             * GET jvmPid
+             */
             mpid.append(name.split("@")[0]);
         }
-      /*
-       * MAC + PID 的 hashcode 获取16个低位
-       */
+        /*
+         * MAC + PID 的 hashcode 获取16个低位
+         */
         return (mpid.toString().hashCode() & 0xffff) % (maxWorkerId + 1);
     }
 
