@@ -15,7 +15,7 @@
         <module>tensquare_manager</module>
     </modules>
 
-.    <description>十次方项目</description>
+    <description>十次方项目</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
