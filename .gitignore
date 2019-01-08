@@ -1,0 +1,23 @@
+# Compiled class file
+*.class
+
+# IDEA file
+.idea/
+*.iml
+
+# Target
+target/
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+
+.project
+.settings/
+LICENSE
+.classpath
+
+*.MF
