@@ -100,9 +100,9 @@
             </activation>
         </profile>
         <profile>
-            <id>sit</id>
+            <id>test</id>
             <properties>
-                <profiles.active>sit</profiles.active>
+                <profiles.active>test</profiles.active>
             </properties>
         </profile>
         <profile>
