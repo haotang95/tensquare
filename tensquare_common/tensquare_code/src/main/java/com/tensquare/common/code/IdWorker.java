@@ -90,11 +90,6 @@ public class IdWorker {
         return instance;
     }
 
-    private static ResourceBundle getResourceBundle(String config) {
-        ResourceBundle bundle = ResourceBundle.getBundle(config);
-        return bundle;
-    }
-
     /**
      * 获取下一个ID
      *
