@@ -6,6 +6,7 @@ import com.tensquare.common.code.ResultData;
 import com.tensquare.common.code.StatusCode;
 import com.tensquare.common.utils.IdUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ import java.util.List;
  * @auther tangh
  * @date 2019/1/7 0007 16:17
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/base")
 public class BaseController {
@@ -26,6 +28,7 @@ public class BaseController {
 
     @GetMapping("/get")
     public ResultData get() {
+        int i = 1/0;
         String snowFlakeId = IdUtils.getSnowFlakeId();
         return new ResultData(true, StatusCode.ERROR.getCode(), "1", snowFlakeId);
     }
