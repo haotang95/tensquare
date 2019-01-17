@@ -1,6 +1,16 @@
 package com.tensquare.common.utils;
 
-import java.util.ResourceBundle;
+import org.yaml.snakeyaml.Yaml;
+import sun.net.ResourceManager;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @auther tangh
@@ -8,24 +18,40 @@ import java.util.ResourceBundle;
  */
 public class PropertiesFileUtil {
 
-    private static ResourceBundle resourceBundle;
+    private static InputStream inputStream;
 
-    private static String defaultResource = "config";
+    private static Map<String,Object> map;
 
-    public static PropertiesFileUtil getInstance() {
-        resourceBundle = ResourceBundle.getBundle(defaultResource);
+    private static String defaultResource = "application.yml";
+
+    public static synchronized PropertiesFileUtil getInstance() {
+        inputStream = ClassLoader.getSystemResourceAsStream(defaultResource);
+        Yaml yaml = new Yaml();
+        map = (Map<String,Object>) yaml.loadAs(inputStream, Map.class);
+        map.forEach((key, val) ->{
+            System.out.println(key);
+        });
         return new PropertiesFileUtil();
     }
 
-    public static PropertiesFileUtil getInstance(String resource) {
-        resourceBundle = ResourceBundle.getBundle(resource);
+    public static synchronized PropertiesFileUtil getInstance(String resource) {
+        inputStream = File.class.getClassLoader().getResourceAsStream(resource);
+        Yaml yaml = new Yaml();
+        map = (Map<String,Object>) yaml.load(inputStream);
         return new PropertiesFileUtil();
     }
 
-    public String get(String key) {
-        if (resourceBundle == null) {
+    public synchronized String get(String key){
+        if (map == null) {
             getInstance();
         }
-        return resourceBundle.getString(key);
+        Map<String,Object> temp = map;
+        List<String> list = Arrays.asList(key.split("\\."));
+        for (String str:list){
+            Object o = temp.get(str);
+            if(o instanceof Map)
+                temp = (Map<String, Object>) o;
+        }
+        return String.valueOf(temp.get(list.get(list.size() - 1)));
     }
 }

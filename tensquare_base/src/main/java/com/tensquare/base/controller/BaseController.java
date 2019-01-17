@@ -4,7 +4,7 @@ import com.tensquare.base.enitiy.TCoursesEntity;
 import com.tensquare.base.service.UserService;
 import com.tensquare.common.code.ResultData;
 import com.tensquare.common.code.StatusCode;
-import com.tensquare.common.utils.IdUtils;
+import com.tensquare.common.utils.IdUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,9 +28,8 @@ public class BaseController {
 
     @GetMapping("/get")
     public ResultData get() {
-        int i = 1/0;
-        String snowFlakeId = IdUtils.getSnowFlakeId();
-        return new ResultData(true, StatusCode.ERROR.getCode(), "1", snowFlakeId);
+        String snowFlakeId = IdUtil.getSnowFlakeId();
+        return new ResultData(true, StatusCode.SUCCESS.getCode(), "1", snowFlakeId);
     }
 
 

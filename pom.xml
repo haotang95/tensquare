@@ -28,6 +28,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
+        <mysql.connect.version>5.1.46</mysql.connect.version>
+        <yaml.snake.version>1.17</yaml.snake.version>
     </properties>
 
     <dependencies>
@@ -43,11 +45,16 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.46</version>
+            <version>${mysql.connect.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.yaml</groupId>
+            <artifactId>snakeyaml</artifactId>
+            <version>${yaml.snake.version}</version>
         </dependency>
     </dependencies>
 
@@ -90,27 +97,24 @@
     </pluginRepositories>
 
     <profiles>
-        <profile>
+<!--        <profile>
             <id>dev</id>
             <properties>
-                <profiles.active>dev</profiles.active>
+                <spring.profiles.active>dev</spring.profiles.active>
             </properties>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
         </profile>
         <profile>
             <id>test</id>
             <properties>
-                <profiles.active>test</profiles.active>
+                <spring.profiles.active>test</spring.profiles.active>
             </properties>
         </profile>
         <profile>
             <id>uat</id>
             <properties>
-                <profiles.active>uat</profiles.active>
+                <spring.profiles.active>uat</spring.profiles.active>
             </properties>
-        </profile>
+        </profile>-->
     </profiles>
 
 </project>

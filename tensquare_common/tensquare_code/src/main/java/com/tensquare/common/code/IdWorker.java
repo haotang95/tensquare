@@ -81,8 +81,8 @@ public class IdWorker {
     //获取实例
     public static IdWorker getInstance() {
         if (instance == null) {
-            String snowflakeSystemCodeId = PropertiesFileUtil.getInstance().get("snowflake.systemCode.id");
-            String snowflakeWorkCodeId = PropertiesFileUtil.getInstance().get("snowflake.workCode.id");
+            String snowflakeSystemCodeId = PropertiesFileUtil.getInstance().get("snowflake.systemCode");
+            String snowflakeWorkCodeId = PropertiesFileUtil.getInstance().get("snowflake.workCode");
             long systemCode = Long.valueOf(snowflakeSystemCodeId);
             long workCode = Long.valueOf(snowflakeWorkCodeId);
             return new IdWorker(systemCode, workCode);

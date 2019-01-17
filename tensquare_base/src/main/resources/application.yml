@@ -1,3 +1,19 @@
+#使用默认配置
+server:
+  port: 10002
 spring:
-  profiles:
-    active: dev
+  application:
+    name: tensquare-base
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.78.70.19:3306/eke?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+
+  jpa:
+    database: MySQL
+    show-sql: true
+
+snowflake:
+  systemCode: 1
+  workCode: 1
