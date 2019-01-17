@@ -1,14 +1,10 @@
 package com.tensquare.common.utils;
 
 import org.yaml.snakeyaml.Yaml;
-import sun.net.ResourceManager;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
