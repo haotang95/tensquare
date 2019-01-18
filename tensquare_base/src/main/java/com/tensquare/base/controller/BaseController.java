@@ -1,7 +1,9 @@
 package com.tensquare.base.controller;
 
 import com.tensquare.base.enitiy.TCoursesEntity;
+import com.tensquare.base.redis.RedisUtil;
 import com.tensquare.base.service.UserService;
+import com.tensquare.common.code.Constant;
 import com.tensquare.common.code.ResultData;
 import com.tensquare.common.code.StatusCode;
 import com.tensquare.common.utils.IdUtil;
@@ -24,11 +26,11 @@ public class BaseController {
 
     @Autowired
     private UserService userService;
-    
 
     @GetMapping("/get")
     public ResultData get() {
         String snowFlakeId = IdUtil.getSnowFlakeId();
+        RedisUtil.set(Constant.REDIS_TEST_KEY, snowFlakeId);
         return new ResultData(true, StatusCode.SUCCESS.getCode(), "1", snowFlakeId);
     }
 

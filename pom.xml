@@ -30,6 +30,7 @@
         <java.version>1.8</java.version>
         <mysql.connect.version>5.1.46</mysql.connect.version>
         <yaml.snake.version>1.17</yaml.snake.version>
+        <com.fastjson.version>1.2.8</com.fastjson.version>
     </properties>
 
     <dependencies>
@@ -52,9 +53,18 @@
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.yaml</groupId>
             <artifactId>snakeyaml</artifactId>
             <version>${yaml.snake.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>${com.fastjson.version}</version>
         </dependency>
     </dependencies>
 

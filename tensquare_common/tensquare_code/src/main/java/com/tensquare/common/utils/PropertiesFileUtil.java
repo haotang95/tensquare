@@ -21,19 +21,20 @@ public class PropertiesFileUtil {
     private static String defaultResource = "application.yml";
 
     public static synchronized PropertiesFileUtil getInstance() {
-        inputStream = ClassLoader.getSystemResourceAsStream(defaultResource);
-        Yaml yaml = new Yaml();
-        map = (Map<String,Object>) yaml.loadAs(inputStream, Map.class);
-        map.forEach((key, val) ->{
-            System.out.println(key);
-        });
+        if(map == null){
+            inputStream = ClassLoader.getSystemResourceAsStream(defaultResource);
+            Yaml yaml = new Yaml();
+            map = (Map<String,Object>) yaml.loadAs(inputStream, Map.class);
+        }
         return new PropertiesFileUtil();
     }
 
     public static synchronized PropertiesFileUtil getInstance(String resource) {
-        inputStream = File.class.getClassLoader().getResourceAsStream(resource);
-        Yaml yaml = new Yaml();
-        map = (Map<String,Object>) yaml.load(inputStream);
+        if(map == null){
+            inputStream = File.class.getClassLoader().getResourceAsStream(resource);
+            Yaml yaml = new Yaml();
+            map = (Map<String,Object>) yaml.load(inputStream);
+        }
         return new PropertiesFileUtil();
     }
 
