@@ -8,6 +8,9 @@
 # Target
 target/
 
+# Test
+test/
+
 # Log file
 *.log
 
