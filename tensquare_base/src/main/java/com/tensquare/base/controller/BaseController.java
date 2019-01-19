@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @auther tangh
@@ -39,5 +40,12 @@ public class BaseController {
     public ResultData findAll(String a,String b){
         List<TCoursesEntity> all = userService.findAll();
         return new ResultData(true, StatusCode.SUCCESS.getCode(), "cg", all);
+    }
+
+
+    @GetMapping("/nativeSQL")
+    public ResultData abc(){
+        List<Map> objects = userService.nativeSQL();
+        return new ResultData(true, StatusCode.SUCCESS.getCode(), "cg", objects);
     }
 }

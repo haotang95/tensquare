@@ -7,15 +7,14 @@
     <groupId>com.tensquare</groupId>
     <artifactId>tensquare_parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>${tensquare.version}</version>
+
     <modules>
         <module>tensquare_common</module>
         <module>tensquare_base</module>
         <module>tensquare_user</module>
         <module>tensquare_manager</module>
     </modules>
-
-    <description>十次方项目</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -31,6 +30,7 @@
         <mysql.connect.version>5.1.46</mysql.connect.version>
         <yaml.snake.version>1.17</yaml.snake.version>
         <com.fastjson.version>1.2.8</com.fastjson.version>
+        <tensquare.version>1.0.0</tensquare.version>
     </properties>
 
     <dependencies>
@@ -74,10 +74,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--</dependency>-->
     </dependencies>
 
     <repositories>
