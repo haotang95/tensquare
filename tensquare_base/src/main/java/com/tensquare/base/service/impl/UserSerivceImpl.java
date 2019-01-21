@@ -5,8 +5,9 @@ import com.tensquare.base.enitiy.TCoursesEntity;
 import com.tensquare.base.enitiy.dto.CourseDTO;
 import com.tensquare.base.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.querydsl.QPageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -35,9 +36,9 @@ public class UserSerivceImpl implements UserService {
     public List<Map> nativeSQL() {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId("481528434787483648");
-        PageRequest pageRequest = new PageRequest(0, 2);
+        Pageable pageable = new QPageRequest(0, 2);
         Sort sort = new Sort(Sort.Direction.DESC,"a.createTime");
-        List<Map> courseA = userDao.getCourseA(courseDTO, pageRequest,sort);
+        List<Map> courseA = userDao.getCourseA(courseDTO, pageable,sort);
         return courseA;
     }
 

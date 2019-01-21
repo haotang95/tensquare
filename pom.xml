@@ -14,6 +14,7 @@
         <module>tensquare_base</module>
         <module>tensquare_user</module>
         <module>tensquare_manager</module>
+        <module>tensquare_eureka</module>
     </modules>
 
     <parent>
@@ -78,6 +79,7 @@
             <!--<groupId>org.springframework.boot</groupId>-->
             <!--<artifactId>spring-boot-starter-security</artifactId>-->
         <!--</dependency>-->
+
     </dependencies>
 
     <repositories>
@@ -118,6 +120,18 @@
         </pluginRepository>
     </pluginRepositories>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>Finchley.M8</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <profiles>
 <!--        <profile>
             <id>dev</id>
@@ -131,11 +145,6 @@
                 <spring.profiles.active>test</spring.profiles.active>
             </properties>
         </profile>
-        <profile>
-            <id>uat</id>
-            <properties>
-                <spring.profiles.active>uat</spring.profiles.active>
-            </properties>
         </profile>-->
     </profiles>
 

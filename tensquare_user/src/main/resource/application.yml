@@ -19,5 +19,5 @@ spring:
     host: 120.78.70.19
 
 snowflake:
-  systemCode: 1
+  systemCode: 2
   workCode: 1

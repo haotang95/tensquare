@@ -1,0 +1,17 @@
+#eureka机器端口
+server:
+  port: 66666
+spring:
+  application:
+    name: tensquare_eureka
+
+eureka:
+  client:
+    # 是否将自己注册到eureka服务中 本身是eureka注册中心所以不用
+    register-with-eureka: false
+    # 从eureka中获取注册信息
+    fetch-registry: false
+    instance:
+      hostname: 127.0.0.1
+    service-url:
+      defaultZone: http://${eureka.client.instance.hostname}:${server.port}/eureka/
