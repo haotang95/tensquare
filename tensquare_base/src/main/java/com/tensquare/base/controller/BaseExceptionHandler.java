@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @auther tangh
  * @date 2019/1/9 0009 9:02
  */
-@ControllerAdvice
 public class BaseExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
@@ -20,5 +19,4 @@ public class BaseExceptionHandler {
         e.printStackTrace();
         return new ResultData(false, StatusCode.ERROR.getCode(), StatusCode.ERROR.getMsg(), e.getMessage());
     }
-
 }

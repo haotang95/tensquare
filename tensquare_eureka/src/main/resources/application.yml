@@ -4,7 +4,8 @@ server:
 spring:
   application:
     name: tensquare_eureka
-
+  rabbitmq:
+    host: 120.78.70.19
 eureka:
   client:
     # 是否将自己注册到eureka服务中 本身是eureka注册中心所以不用

@@ -1,3 +1,8 @@
+# 雪花id
+snowflake:
+  systemCode: 2
+  workCode: 1
+
 #使用默认配置
 server:
   port: 10002
@@ -18,6 +23,16 @@ spring:
   rabbitmq:
     host: 120.78.70.19
 
-snowflake:
-  systemCode: 2
-  workCode: 1
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
+  instance:
+    prefer-ip-address: true
+  # 此处为自行配置
+  server:
+    hostname: localhost
+    port: 19999
+feign:
+  hystrix:
+    enabled: true

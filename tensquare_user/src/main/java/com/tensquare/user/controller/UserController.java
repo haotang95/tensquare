@@ -1,5 +1,6 @@
 package com.tensquare.user.controller;
 
+import com.tensquare.user.feign.BaseClient;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,9 +21,12 @@ public class UserController {
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    @Autowired
+    private BaseClient baseClient;
+
     @GetMapping("send")
     public void testSend(){
-        rabbitTemplate.convertAndSend("tensquare.exchange.ex","tensquare.a","i love life");
+        rabbitTemplate.convertAndSend("tensquare.exchange.ex","tensquare.a", String.valueOf(baseClient.get().getData()));
     }
 
 
