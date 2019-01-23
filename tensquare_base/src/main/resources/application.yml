@@ -25,8 +25,9 @@ eureka:
       defaultZone: http://${eureka.server.hostname}:${eureka.server.port}/eureka/
   instance:
     prefer-ip-address: true
+  # 此处为自行配置
   server:
     hostname: localhost
-    port: 9999
+    port: 19999
 
 

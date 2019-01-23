@@ -5,7 +5,7 @@
     <parent>
         <artifactId>tensquare_common</artifactId>
         <groupId>com.tensquare</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>${tensquare.version}</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

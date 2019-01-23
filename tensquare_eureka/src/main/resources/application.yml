@@ -1,6 +1,6 @@
 #eureka机器端口
 server:
-  port: 66666
+  port: 19999
 spring:
   application:
     name: tensquare_eureka

@@ -36,9 +36,7 @@ public class UserSerivceImpl implements UserService {
     public List<Map> nativeSQL() {
         CourseDTO courseDTO = new CourseDTO();
         courseDTO.setId("481528434787483648");
-        Pageable pageable = new QPageRequest(0, 2);
-        Sort sort = new Sort(Sort.Direction.DESC,"a.createTime");
-        List<Map> courseA = userDao.getCourseA(courseDTO, pageable,sort);
+        List<Map> courseA = userDao.getCourse(courseDTO.getId());
         return courseA;
     }
 
