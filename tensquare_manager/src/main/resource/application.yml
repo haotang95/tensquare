@@ -1,0 +1,19 @@
+server:
+  port: 20000
+spring:
+  application:
+    name: tensquare-manager
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:19999/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    tensquare-base:
+      path: /base/**
+      serviceId: tensquare-base
+    tensquare-user:
+      path: /user/**
+      serviceId: tensquare-user
