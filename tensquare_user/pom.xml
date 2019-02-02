@@ -3,15 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>com.tensquare.user</groupId>
     <artifactId>tensquare_user</artifactId>
-    <version>${tensquare.version}</version>
 
     <parent>
         <artifactId>tensquare_parent</artifactId>
         <groupId>com.tensquare</groupId>
         <version>${tensquare.version}</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <dependencies>
@@ -47,5 +46,18 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-rabbit</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
     </dependencies>
+
 </project>

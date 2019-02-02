@@ -7,9 +7,9 @@
         <groupId>com.tensquare</groupId>
         <version>${tensquare.version}</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>tensquare_enitiy</artifactId>
-
 
 </project>
