@@ -30,7 +30,6 @@ public class BaseController {
 
     @GetMapping("/get")
     public ResultData get() {
-        int i = 1 / 0;
         String snowFlakeId = IdUtil.getSnowFlakeId();
         RedisUtil.set(Constant.REDIS_TEST_KEY, snowFlakeId);
         return new ResultData(true, StatusCode.SUCCESS.getCode(), "1", snowFlakeId);
