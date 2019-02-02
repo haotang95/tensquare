@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ManagerFilter extends ZuulFilter {
+
     @Override
     public String filterType() {
         return "前置过滤器";
@@ -31,4 +32,5 @@ public class ManagerFilter extends ZuulFilter {
         System.out.println("zuul过滤器");
         return null;
     }
+
 }
