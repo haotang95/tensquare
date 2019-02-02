@@ -18,7 +18,7 @@ public class PropertiesFileUtil {
 
     private static Map<String,Object> map;
 
-    private static String defaultResource = "application.yml";
+    private static String defaultResource = "bootstrap.yml";
 
     public static synchronized PropertiesFileUtil getInstance() {
         if(map == null){

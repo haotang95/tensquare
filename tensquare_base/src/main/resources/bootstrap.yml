@@ -5,3 +5,6 @@ spring:
       profile: dev
       label: master
       uri: http://127.0.0.1:12000
+snowflake:
+  systemCode: 1
+  workCode: 1
