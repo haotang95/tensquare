@@ -77,8 +77,8 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-security</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-security</artifactId>-->
         <!--</dependency>-->
 
     </dependencies>
@@ -133,20 +133,49 @@
         </dependencies>
     </dependencyManagement>
 
+    <build>
+        <finalName>app</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <configuration>
+                    <imageName>120.78.70.19:5000/${project.artifactId}:${project.version}</imageName>
+                    <baseImage>jdk1.8</baseImage>
+                    <entryPoint>["java", "-jar", "/${project.build.finalName}.jar"]</entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}
+                            </directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                        <dockerHost>http://120.78.70.19:2375</dockerHost>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
     <profiles>
-<!--        <profile>
-            <id>dev</id>
-            <properties>
-                <spring.profiles.active>dev</spring.profiles.active>
-            </properties>
-        </profile>
-        <profile>
-            <id>test</id>
-            <properties>
-                <spring.profiles.active>test</spring.profiles.active>
-            </properties>
-        </profile>
-        </profile>-->
+        <!--        <profile>
+                    <id>dev</id>
+                    <properties>
+                        <spring.profiles.active>dev</spring.profiles.active>
+                    </properties>
+                </profile>
+                <profile>
+                    <id>test</id>
+                    <properties>
+                        <spring.profiles.active>test</spring.profiles.active>
+                    </properties>
+                </profile>
+                </profile>-->
     </profiles>
 
 </project>
