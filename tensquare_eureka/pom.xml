@@ -32,7 +32,7 @@
     </dependencies>
 
     <build>
-        <finalName>app</finalName>
+        <finalName>app-eureka</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
