@@ -52,8 +52,8 @@
                             <directory>${project.build.directory}</directory>
                             <include>${project.build.finalName}.jar</include>
                         </resource>
-                        <dockerHost>http://120.78.70.19:2375</dockerHost>
                     </resources>
+                    <dockerHost>http://120.78.70.19:2375</dockerHost>
                 </configuration>
             </plugin>
         </plugins>
